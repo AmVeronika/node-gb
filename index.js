@@ -1,21 +1,27 @@
 const colors = require("colors/safe");
 const [firstValue, secondValue] = process.argv.slice(2);
 let arrOfPrime = [];
-let even = (el)=> parseFloat(el) == Number;
+
+console.log(colors.red('Задание по первому уроку'))
 
 if (!Number(firstValue)||!Number(secondValue)) {
     console.log(colors.red('Вы не ввели число'))
     process.exit(1);
 }
-selectionNumber:
-    for (let i = firstValue; i <= secondValue; i++) {
+function selectionNumber(a, b) {
+    for (let i = a; i <= b; i++) {
+        let flag = true
         for (let j = 2; j < i; j++) {
             if (i % j === 0) {
-                continue selectionNumber
+                flag = false
             }
         }
-        arrOfPrime.push(+i)
+        if(flag) {
+            arrOfPrime.push(+i)
+        }
     }
+}
+selectionNumber(firstValue, secondValue)
 
 if (+firstValue > +secondValue) {
     console.log(colors.red('Первое число не может быть больше торого'))
