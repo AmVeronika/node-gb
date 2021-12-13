@@ -51,3 +51,5 @@ function setTime() {
     }
     console.log(`До начала мероприятия осталось: ${day} дней/дня ${hour} час.  ${min} мин. ${sec} сек.`);
 }
+
+const EventEmitter = require('events');

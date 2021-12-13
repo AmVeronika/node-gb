@@ -1,8 +1,13 @@
 const colors = require("colors/safe");
-const [firstValue, secondValue] = process.argv.slice(2);
+let [firstValue, secondValue] = process.argv.slice(2);
 let arrOfPrime = [];
 
 console.log(colors.red('Задание по первому уроку'))
+if (secondValue == undefined || secondValue < 2 || firstValue == undefined || firstValue < 2) {// Если числа ниже 2, закрыть программу
+    console.log(colors.red('Числа меньше 2 не являются простыми'))
+    process.exit(1);
+}
+
 
 if (!Number(firstValue)||!Number(secondValue)) {
     console.log(colors.red('Вы не ввели число'))
@@ -18,10 +23,13 @@ function selectionNumber(a, b) {
         }
         if(flag) {
             arrOfPrime.push(+i)
+            if(arrOfPrime[0] == 1) {
+                arrOfPrime.splice(0,1)
+            }
         }
     }
 }
-selectionNumber(firstValue, secondValue)
+selectionNumber(+firstValue, +secondValue)
 
 if (+firstValue > +secondValue) {
     console.log(colors.red('Первое число не может быть больше торого'))
